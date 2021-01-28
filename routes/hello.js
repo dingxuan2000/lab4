@@ -2,9 +2,12 @@
 /*
  * GET home page.
  */
-
+//this is view() in hello module.
 exports.view = function(req, res){
-  res.render('index', {
-  	'name': '',
+  //username is the part of the route.
+  var nameToShow = req.params.userName;
+  console.log('name is ' + nameToShow);
+  res.render('hello', {
+  	'name': nameToShow,
   });
 };

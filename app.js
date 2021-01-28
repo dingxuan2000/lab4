@@ -9,6 +9,7 @@ var path = require('path');
 var handlebars = require('express3-handlebars')
 
 var index = require('./routes/index');
+var project = require('./routes/project'); //load all controllers in routes/project.js
 var hello = require('./routes/hello');
 // Example route
 // var user = require('./routes/user');
@@ -37,9 +38,12 @@ if ('development' == app.get('env')) {
 
 // Add routes here
 app.get('/', index.view);
+//hello.view: a function to call, call view() in the hello module.
 app.get('/hello/:userName', hello.view);
 // Example route
 // app.get('/users', user.list);
+//call project.viewProject() function when the URL is requested.
+app.get('/project/:name', project.viewProject);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
